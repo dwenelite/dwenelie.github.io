@@ -1,469 +1,440 @@
-# baseURL= https://hugo-theme-luna.imiku.me/
-languageCode= "en-us"
-defaultContentLanguage= "en-us"
-title= "Hugo Theme Luna"
-enableRobotsTXT= "true"
-enableEmoji= "true"
-theme= "hugo-theme-luna"
-timeout= "60000"
-timeZone= "Asia/Jakarta"
+baseURL = "https://hugo-theme-luna.imiku.me/"
+languageCode = "en-us"
+defaultContentLanguage = "en-us"
+title = "Hugo Theme Luna"
+enableRobotsTXT = true
+enableEmoji = true
+theme = "hugo-theme-luna"
+timeout = 60_000
+timeZone = "Asia/Jakarta"
+enableGitInfo = false
+hasCJKLanguage = true
+paginate = 10
+summaryLength = 70
+canonifyURLs = false
+relativeURLs = false
 
-# 可根据 Git 中的提交生成最近更新记录。
-# use git commit log to generate lastmod record
-enableGitInfo: false
+[permalinks]
+posts = "/:year/:month/:day/:slug.html"
+pages = "/:slug.html"
 
-# 如果你的博客包含中日韩语，请启用此选项
-# enable CJK language support
-hasCJKLanguage: true
+[author]
+name = "Ice-Hazymoon"
 
-# 每页显示文章数量
-# pagination size
-paginate: 10
+[frontmatter]
+lastmod = [
+  ":git",
+  "lastmod",
+  ":fileModTime",
+  "date",
+  "publishDate",
+  ":default"
+]
 
-# 启用谷歌统计
-# google analytics tracking code
-# googleAnalytics: x-xxxxx
+[taxonomies]
+tag = "tags"
+category = "categories"
 
-# 版权信息，默认为 author.name ↓
-# default: author.name ↓
-# copyright: "" 
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 95
+anchor = "smart"
 
-permalinks:
-  # 文章链接的格式
-  # Format of posts links
-  posts: /:year/:month/:day/:slug.html # 2019/01/01/hello-world.html
-  pages: /:slug.html # about.html
+[caches.getresource]
+dir = ":resourceDir/_gen"
+maxAge = "24h"
 
-author:
-  name: Ice-Hazymoon
+[privacy.googleAnalytics]
+anonymizeIP = true
+googleAnalytics = "G-J5DDYB6R2J"
 
-frontmatter:
-  lastmod:
-    - :git
-    - lastmod
-    - :fileModTime
-    - date
-    - publishDate
-    - :default
+[privacy.youtube]
+privacyEnhanced = true
 
-taxonomies:
-  tag: "tags"
-  category: "categories"
+[sitemap]
+changefreq = "weekly"
+priority = 0.5
+filename = "sitemap.xml"
 
-summaryLength: 70
-canonifyURLs: false
-relativeURLs: false
+[["$manuMain"]]
+name = "Home"
+weight = 10
+identifier = "home"
+url = "/"
 
-# 图像处理
-# see https://gohugo.io/content-management/image-processing/#imaging-configuration
-imaging:
-  resampleFilter: CatmullRom
-  quality: 95
-  anchor: smart
+  ["$manuMain".params]
+  icon = "eva eva-home"
 
-caches:
-  getresource:
-    dir: :resourceDir/_gen
-    maxAge: 24h
+[["$manuMain"]]
+name = "About"
+weight = 20
+identifier = "about"
+url = "/about/"
 
-# 隐私政策，请查看 https://gohugo.io/about/hugo-and-gdpr/
-# See https://gohugo.io/about/hugo-and-gdpr/
-privacy:
-  googleAnalytics:
-    anonymizeIP: true
-  youtube:
-    privacyEnhanced: true
+  ["$manuMain".params]
+  icon = "eva eva-heart"
 
-sitemap:
-  changefreq: weekly
-  priority: 0.5
-  filename: sitemap.xml
+[["$manuMain"]]
+name = "Links"
+weight = 30
+identifier = "links"
+url = "/links/"
 
-# 所有支持的页面
-# all supported pages
-$manuMain:
-  - &mainMenuHome
-    name: Home
-    weight: 10
-    identifier: home
-    params:
-      icon: eva eva-home
-    url: /
-  - &mainMenuAbout
-    name: About
-    weight: 20
-    identifier: about
-    params:
-      icon: eva eva-heart
-    url: /about/
-  - &mainMenuLinks
-    name: Links
-    weight: 30
-    identifier: links
-    params:
-      icon: eva eva-people
-    url: /links/
-  - &mainMenuArchives
-    name: Archives
-    weight: 40
-    identifier: archives
-    params:
-      icon: eva eva-bar-chart
-    url: /archives/
-  - &mainMenuTags
-    name: Tags
-    weight: 50
-    identifier: tags
-    params:
-      icon: eva eva-hash
-    url: /tags/
-  - &mainMenuCategories
-    name: Categories
-    weight: 60
-    identifier: categories
-    params:
-      icon: eva eva-folder
-    url: /categories/
-  - &mainMenuTwitter
-    name: Twitter
-    weight: 70
-    identifier: twitter
-    params:
-      icon: eva eva-twitter
-    url: /twitter/
-  - &mainMenuGitHub
-    name: GitHub
-    weight: 80
-    identifier: github
-    params:
-      icon: eva eva-github
-    url: /github/
-  - &mainMenuSearch
-    name: Search
-    weight: 999
-    identifier: search
-    params:
-      icon: eva eva-search
-    url: /search/
+  ["$manuMain".params]
+  icon = "eva eva-people"
 
-menu:
-  main:
-    - *mainMenuHome
-    - *mainMenuAbout
-    - *mainMenuLinks
-    - *mainMenuArchives
-    - *mainMenuTwitter
-    - *mainMenuGitHub
-    - *mainMenuSearch
+[["$manuMain"]]
+name = "Archives"
+weight = 40
+identifier = "archives"
+url = "/archives/"
 
-markup:
-  highlight:
-    style: dracula
-    guessSyntax: true
-    tabWidth: 4
-    lineNumbersInTable: true
-    lineNos: true
-    codeFences: true
-  goldmark:
-    renderer:
-      unsafe: true # enable html in markdown
+  ["$manuMain".params]
+  icon = "eva eva-bar-chart"
 
-# .Site.Params
-params:
-  # CDN 地址
-  # CDN URL
-  publicCDN: ""
+[["$manuMain"]]
+name = "Tags"
+weight = 50
+identifier = "tags"
+url = "/tags/"
 
-  # 在首页顶部创建一个通知部分
-  # Create a Announcement section at the top of the home page
-  announcement:
-    enabled: true
-    file: "README.md" # assets/README.md
+  ["$manuMain".params]
+  icon = "eva eva-hash"
 
-  # 评论系统
-  # Comment system
-  comments:
-    enabled: true
-    provider: "giscus" # custom | giscus
-    giscus: &giscus
-      repo: "Ice-Hazymoon/hugo-theme-luna"
-      repoID: "R_kgDOHQOwYw"
-      category: "Comments"
-      categoryID: "DIC_kwDOHQOwY84CP0Sy"
-      mapping: "title"
-      reactionsEnabled: 1
-      emitMetadata: 0
-      lazy: false
-      lang: "en"
+[["$manuMain"]]
+name = "Categories"
+weight = 60
+identifier = "categories"
+url = "/categories/"
 
-  # Rss 配置
-  # RSS configuration
-  rss:
-    # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
-    # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
-    enabled: true
-    # 是否输出全文
-    # Output full text
-    fullText: true
+  ["$manuMain".params]
+  icon = "eva eva-folder"
 
-  # 如果为 false，你必须设置 Output Formats，请查看：https://gohugo.io/templates/output-formats#customizing-output-formats
-  # If false, you must set Output Formats, see: https://gohugo.io/templates/output-formats#customizing-output-formats
-  sitemap: true
+[["$manuMain"]]
+name = "Twitter"
+weight = 70
+identifier = "twitter"
+url = "/twitter/"
 
-  # 网站主题颜色
-  # Site theme colors
-  themeColor: "#dd6065"
+  ["$manuMain".params]
+  icon = "eva eva-twitter"
 
-  # 设置网站为黑白模式，通常用于哀悼活动
-  # Set website to black and white, usually for mourning events
-  blackAndWhite: false
+[["$manuMain"]]
+name = "GitHub"
+weight = 80
+identifier = "github"
+url = "/github/"
 
-  # 输出一个漂亮的控制台日志
-  # Output a nice console log
-  console:
-    enabled: true
-    leftColor: "#dd6065"
-    leftText: "Hugo Theme Luna"
-    rightColor: "#feb462"
-    rightText: "Powered by Hugo ❤ Luna"
+  ["$manuMain".params]
+  icon = "eva eva-github"
 
-  # 标题计数器
-  # Title counter
-  headlineCounter: true
+[["$manuMain"]]
+name = "Search"
+weight = 999
+identifier = "search"
+url = "/search/"
 
-  # 固定导航栏
-  # Fixed navigation bar
-  fixedNav: false
+  ["$manuMain".params]
+  icon = "eva eva-search"
 
-  # 网站字体
-  # Site font
-  # font: '"Times New Roman", Times, "Heti Song", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  font: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif'
+[[menu.main]]
+name = "Home"
+weight = 10
+identifier = "home"
+url = "/"
 
-  # 自定义脚本
-  # ts/custom.ts
-  customScript:
-    enabled: false
-    pjax: true # Auto-reload in pjax mode
+  [menu.main.params]
+  icon = "eva eva-home"
 
-  # 网站底部显示运行时间
-  # Show site runtime
-  runTime:
-    enabled: true
-    # 网站创建时间
-    # Site creation time
-    creatTime: 2016/12/12
-  
-  #  网站创建年份
-  # Site creation year
-  since: "2016"
+[[menu.main]]
+name = "About"
+weight = 20
+identifier = "about"
+url = "/about/"
 
-  # 显示文章过时提醒
-  # show warning when outdated info detected
-  outdatedInfoWarning:
-    enabled: true
-    # 超过该天数将显示过时提醒
-    # A timeout reminder will be displayed if the last modification time exceeds that number of days
-    day: 90
+  [menu.main.params]
+  icon = "eva eva-heart"
 
-  # 自动切换夜间模式（使用设备设置）
-  # Automatic switching of night mode (using device settings)
-  autoDarkMode: false
+[[menu.main]]
+name = "Links"
+weight = 30
+identifier = "links"
+url = "/links/"
 
-  # 文章分享功能
-  share:
-    twitter: true
-    facebook: true
-    weibo: true
-    copyLinkText: true
-    qrcode: true
-  
-  # qrcodeAPI: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="
-  qrcodeAPI: "https://www.lofter.com/genBitmaxImage?url="
+  [menu.main.params]
+  icon = "eva eva-people"
 
-  # 文章许可设置
-  # license
-  license:
-    enabled: true
-    name: "CC BY-NC-ND 4.0"
-    icon: "Cc-by-nc-nd.svg" # in assets folder
-    url: "https://creativecommons.org/licenses/by-nc-nd/4.0"
+[[menu.main]]
+name = "Archives"
+weight = 40
+identifier = "archives"
+url = "/archives/"
 
-  # 显示右上角 i18n 切换按钮
-  # Display i18n toggle button
-  i18nlist: true
+  [menu.main.params]
+  icon = "eva eva-bar-chart"
 
-  # GitHub 页面设置
-  # github page
-  github:
-    id: "torvalds" # github user id
-    minStars: 5 # 最小 star 项目 / min stars
+[[menu.main]]
+name = "Twitter"
+weight = 70
+identifier = "twitter"
+url = "/twitter/"
 
-  # Twitter 页面设置
-  # tweet page
-  twitter:
-    rsshub: "https://rsshub.rssforever.com" # rsshub url, see https://github.com/DIYgod/RSSHub
-    id: "GenshinImpact" # Twitter ID
-    imageProcessing: true # 开启图片处理 / enable image processing
+  [menu.main.params]
+  icon = "eva eva-twitter"
 
-  # 开启图片放大功能
-  # Image Zoom Plugin
-  # see https://github.com/francoischalifour/medium-zoom
-  imageZoom: true
+[[menu.main]]
+name = "GitHub"
+weight = 80
+identifier = "github"
+url = "/github/"
 
-  # 图片懒加载
-  # lazyload image
-  lazyload: true
+  [menu.main.params]
+  icon = "eva eva-github"
 
-  # 更快速的阅读英文内容, 参考：https://bionic-reading.com/
-  # Read English content faster, see https://bionic-reading.com/
-  bionicReading:
-    enabled: true
-    autoBionic: false # 自动启用 Bionic Reading / auto enable Bionic Reading
-    skipLinks: false # 跳过链接 / skip links
-    excludeWords: [] # 忽略的单词 / ignored words
-    excludeNodeNames: [] # 忽略的节点名称 / ignored node names
-    excludeClasses: ['github'] # 忽略的类名 / ignored classes
+[[menu.main]]
+name = "Search"
+weight = 999
+identifier = "search"
+url = "/search/"
 
-  # 启用谷歌翻译插件
-  # enable google translate in footer
-  googleTranslate: true
+  [menu.main.params]
+  icon = "eva eva-search"
 
-  # 优化中文排版，请参考：https://github.com/vinta/pangu.js
-  # Optimize Chinese typography, see: https://github.com/vinta/pangu.js
-  pangu: true
+[markup.highlight]
+style = "dracula"
+guessSyntax = true
+tabWidth = 4
+lineNumbersInTable = true
+lineNos = true
+codeFences = true
 
-  # 开启本地搜索插件
-  # enable local search plugin
-  search: true
+[markup.goldmark.renderer]
+unsafe = true
 
-  # 文章页显示最后修改时间
-  # For outdated reminders
-  lastmod: true
+[params]
+publicCDN = ""
+sitemap = true
+themeColor = "#dd6065"
+blackAndWhite = false
+headlineCounter = true
+fixedNav = false
+font = 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif'
+since = "2016"
+autoDarkMode = false
+qrcodeAPI = "https://www.lofter.com/genBitmaxImage?url="
+i18nlist = true
+imageZoom = true
+lazyload = true
+googleTranslate = true
+pangu = true
+search = true
+lastmod = true
+readingTime = true
+wordCount = false
+pjax = true
+pwa = true
+katex = true
+backtop = true
+defaultFeaturedImage = false
+author = "Ice-Hazymoon"
+keywords = [ "Hugo", "Hugo Theme", "Luna" ]
+description = "A simple, performance-first, SEO-friendly Hugo theme"
 
-  # 显示阅读时间
-  # show reading time
-  readingTime: true
+  [params.announcement]
+  enabled = true
+  file = "README.md"
 
-  # 显示文章字数
-  # show word count
-  wordCount: false
+  [params.comments]
+  enabled = true
+  provider = "giscus"
 
-  # 开启文章内目录，可以在页面内单独设置
-  # Show table of contents, You can enable it separately in the page
-  toc:
-    enabled: true
-    # 超过这个字数后将显示目录
-    # When the article word count is greater than this value, the TOC will be displayed
-    wordCount: 400 
+    [params.comments.giscus]
+    repo = "Ice-Hazymoon/hugo-theme-luna"
+    repoID = "R_kgDOHQOwYw"
+    category = "Comments"
+    categoryID = "DIC_kwDOHQOwY84CP0Sy"
+    mapping = "title"
+    reactionsEnabled = 1
+    emitMetadata = 0
+    lazy = false
+    lang = "en"
 
-  # 加密功能
-  # encryption articles
-  HugoEncrypt:
-    # 默认密码
-    # default password
-    Password: "123456"
-    # 密码缓存选项 "session" or "local"
-    # or "local"
-    Storage: "session"
+  [params.rss]
+  enabled = true
+  fullText = true
 
-  # 开启 Pjax 无刷新加载
-  # Enable pjax with swup.js
-  pjax: true
+  [params.console]
+  enabled = true
+  leftColor = "#dd6065"
+  leftText = "Hugo Theme Luna"
+  rightColor = "#feb462"
+  rightText = "Powered by Hugo ❤ Luna"
 
-  # 开启 PWA
-  # use service worker
-  pwa: true
+  [params.customScript]
+  enabled = false
+  pjax = true
 
-  # 开启数学公式
-  # katex
-  katex: true
+  [params.runTime]
+  enabled = true
+  creatTime = "2016/12/12"
 
-  # 开启返回顶部按钮
-  # backtop button
-  backtop: true
+  [params.outdatedInfoWarning]
+  enabled = true
+  day = 90
 
-  # 默认文章封面图片，不会显示在内容页面
-  # Default post card featured image, not displayed on content pages
-  defaultFeaturedImage: false # false | featured.png in assets folder | https://unsplash.it/1920/1080/?random={{timestamp}}
+  [params.share]
+  twitter = true
+  facebook = true
+  weibo = true
+  copyLinkText = true
+  qrcode = true
 
-  # 自动调整图片大小并兼容 Webp 格式
-  # Optimize your images and SEO
-  imageProcessing:
-    cover: true
-    content: true
-    autoResize:
-      - 1080
-      - 1440
-    webp: true
+  [params.license]
+  enabled = true
+  name = "CC BY-NC-ND 4.0"
+  icon = "Cc-by-nc-nd.svg"
+  url = "https://creativecommons.org/licenses/by-nc-nd/4.0"
 
-  # 设置推特卡片样式
-  opengraph:
-    twitter: # see https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
-      cardType: summary_large_image # summary | summary_large_image
-      site: "@Ice_Hazymoon"
-    image: "featured.png" # in assets folder | false
+  [params.github]
+  id = "torvalds"
+  minStars = 5
 
-  author: Ice-Hazymoon
-  keywords:
-    - Hugo
-    - Hugo Theme
-    - Luna
-  description: "A simple, performance-first, SEO-friendly Hugo theme"
+  [params.twitter]
+  rsshub = "https://rsshub.rssforever.com"
+  id = "GenshinImpact"
+  imageProcessing = true
 
-build:
-  noJSConfigInAssets: true
+  [params.bionicReading]
+  enabled = true
+  autoBionic = false
+  skipLinks = false
+  excludeWords = [ ]
+  excludeNodeNames = [ ]
+  excludeClasses = [ "github" ]
 
-languages:
-  #zh-cn:
-  #  contentDir: content/zh-hans
-  #  languageName: 中文
-  #  params:
-  #    languageIcon: "images/i18n/zh-cn.svg" # in assets folder
-  #    font: "Times New Roman,Times,Heti Song,serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol"
-  #    twitter: 
-  #      rsshub: "https://rsshub.rssforever.com"
-  #      id: "Ice_Hazymoon"
-  #      imageProcessing: true
-  #    github:
-  #      id: "Ice-Hazymoon"
-  #      minStars: 10
-  #    license:
-  #      enabled: true
-  #      name: "署名 - 非商业性使用 - 禁止演绎 4.0"
-  #      icon: "Cc-by-nc-nd.svg" # in assets folder
-  #      url: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
-  #    announcement:
-  #      enabled: true
-  #      file: "README.zh.md"
-  #    comments:
-  #      enabled: true
-  #      provider: "giscus"
-  #      giscus:
-  #        <<: *giscus
-  #        lang: "zh-CN"
-  en-us:
-    contentDir: content/en-us
-    languageName: English
-    params:
-      languageIcon: "images/i18n/en-us.svg" # in assets folder
-  ja:
-    contentDir: content/ja
-    languageName: 日本語
-    params:
-      languageIcon: "images/i18n/ja.svg"
-      font: "'-apple-system', BlinkMacSystemFont, 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', 'Noto Sans Japanese', 'ヒラギノ角ゴ Pro W3', 'メイリオ', 'Hiragino Kaku Gothic ProN', 'MS PGothic', Osaka, 'sans-serif'"
-      announcement:
-        enabled: true
-        file: "README.ja.md"
-      comments:
-        enabled: true
-        provider: "giscus"
-        giscus:
-          <<: *giscus
-          lang: "ja"
-    menu:
-      main:
-      - *mainMenuHome
-      - *mainMenuArchives
-      - *mainMenuSearch
+  [params.toc]
+  enabled = true
+  wordCount = 400
+
+  [params.HugoEncrypt]
+  Password = "123456"
+  Storage = "session"
+
+  [params.imageProcessing]
+  cover = true
+  content = true
+  autoResize = [ 1_080, 1_440 ]
+  webp = true
+
+  [params.opengraph]
+  image = "featured.png"
+
+    [params.opengraph.twitter]
+    cardType = "summary_large_image"
+    site = "@Ice_Hazymoon"
+
+[build]
+noJSConfigInAssets = true
+
+[languages.zh-cn]
+contentDir = "content/zh-hans"
+languageName = "中文"
+
+  [languages.zh-cn.params]
+  languageIcon = "images/i18n/zh-cn.svg"
+  font = "Times New Roman,Times,Heti Song,serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol"
+
+    [languages.zh-cn.params.twitter]
+    rsshub = "https://rsshub.rssforever.com"
+    id = "Ice_Hazymoon"
+    imageProcessing = true
+
+    [languages.zh-cn.params.github]
+    id = "Ice-Hazymoon"
+    minStars = 10
+
+    [languages.zh-cn.params.license]
+    enabled = true
+    name = "署名 - 非商业性使用 - 禁止演绎 4.0"
+    icon = "Cc-by-nc-nd.svg"
+    url = "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"
+
+    [languages.zh-cn.params.announcement]
+    enabled = true
+    file = "README.zh.md"
+
+    [languages.zh-cn.params.comments]
+    enabled = true
+    provider = "giscus"
+
+      [languages.zh-cn.params.comments.giscus]
+      repo = "Ice-Hazymoon/hugo-theme-luna"
+      repoID = "R_kgDOHQOwYw"
+      category = "Comments"
+      categoryID = "DIC_kwDOHQOwY84CP0Sy"
+      mapping = "title"
+      reactionsEnabled = 1
+      emitMetadata = 0
+      lazy = false
+      lang = "zh-CN"
+
+[languages.en-us]
+contentDir = "content/en-us"
+languageName = "English"
+
+  [languages.en-us.params]
+  languageIcon = "images/i18n/en-us.svg"
+
+[languages.ja]
+contentDir = "content/ja"
+languageName = "日本語"
+
+  [languages.ja.params]
+  languageIcon = "images/i18n/ja.svg"
+  font = "'-apple-system', BlinkMacSystemFont, 'Yu Gothic', '游ゴシック', YuGothic, '游ゴシック体', 'Noto Sans Japanese', 'ヒラギノ角ゴ Pro W3', 'メイリオ', 'Hiragino Kaku Gothic ProN', 'MS PGothic', Osaka, 'sans-serif'"
+
+    [languages.ja.params.announcement]
+    enabled = true
+    file = "README.ja.md"
+
+    [languages.ja.params.comments]
+    enabled = true
+    provider = "giscus"
+
+      [languages.ja.params.comments.giscus]
+      repo = "Ice-Hazymoon/hugo-theme-luna"
+      repoID = "R_kgDOHQOwYw"
+      category = "Comments"
+      categoryID = "DIC_kwDOHQOwY84CP0Sy"
+      mapping = "title"
+      reactionsEnabled = 1
+      emitMetadata = 0
+      lazy = false
+      lang = "ja"
+
+[[languages.ja.menu.main]]
+name = "Home"
+weight = 10
+identifier = "home"
+url = "/"
+
+  [languages.ja.menu.main.params]
+  icon = "eva eva-home"
+
+[[languages.ja.menu.main]]
+name = "Archives"
+weight = 40
+identifier = "archives"
+url = "/archives/"
+
+  [languages.ja.menu.main.params]
+  icon = "eva eva-bar-chart"
+
+[[languages.ja.menu.main]]
+name = "Search"
+weight = 999
+identifier = "search"
+url = "/search/"
+
+  [languages.ja.menu.main.params]
+  icon = "eva eva-search"
