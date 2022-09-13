@@ -1,12 +1,12 @@
 # baseURL= https://hugo-theme-luna.imiku.me/
-languageCode: en-us
-defaultContentLanguage: en-us
+languageCode= "en-us"
+defaultContentLanguage= "en-us"
 title: "Hugo Theme Luna"
-enableRobotsTXT: true
-enableEmoji: true
-theme: hugo-theme-luna
-timeout: 60000
-timeZone: Asia/Jakarta
+enableRobotsTXT= "true"
+enableEmoji= "true"
+theme= "hugo-theme-luna"
+timeout= "60000"
+timeZone= "Asia/Jakarta"
 
 # 可根据 Git 中的提交生成最近更新记录。
 # use git commit log to generate lastmod record
